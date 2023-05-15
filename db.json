@@ -9,6 +9,16 @@
       "id": "fxzjCpuG",
       "createdAt": 1684143696620,
       "updatedAt": 1684143700084
+    },
+    {
+      "name": "CommandLine",
+      "parentId": null,
+      "isOpen": false,
+      "isSystem": false,
+      "defaultLanguage": "plain_text",
+      "id": "E5s4h9AW",
+      "createdAt": 1684145978153,
+      "updatedAt": 1684145982766
     }
   ],
   "snippets": [
@@ -52,6 +62,24 @@
       "id": "hKMbGP6_",
       "createdAt": 1684143703791,
       "updatedAt": 1684143748325
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "E5s4h9AW",
+      "tagsIds": [],
+      "description": null,
+      "name": "FFMPEG VP8 Transparent",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "ffmpeg -i %04d.png -c:v vp8 -pix_fmt yuva420p -auto-alt-ref 0 -vf \"scale=1080:1920\" -b:v 2M output.webm"
+        }
+      ],
+      "id": "qLZIQpuP",
+      "createdAt": 1684146003469,
+      "updatedAt": 1684146126082
     }
   ],
   "tags": [
