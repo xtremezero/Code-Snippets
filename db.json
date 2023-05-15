@@ -87,6 +87,16 @@
       "createdAt": 1684092224913,
       "updatedAt": 1684092227388,
       "index": 7
+    },
+    {
+      "name": "cmdline-tools",
+      "parentId": null,
+      "isOpen": false,
+      "isSystem": false,
+      "defaultLanguage": "plain_text",
+      "id": "Tbeq7Y2G",
+      "createdAt": 1684175806503,
+      "updatedAt": 1684175815262
     }
   ],
   "snippets": [
@@ -125,7 +135,55 @@
       "id": "dOC39uxZ",
       "createdAt": 1684175786249,
       "updatedAt": 1684175788797
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "Tbeq7Y2G",
+      "tagsIds": [
+        "--EnYQYW",
+        "MXeJ_H6U",
+        "zRRNqtRo",
+        "mi4JpUSB"
+      ],
+      "description": null,
+      "name": "FFMPEG transparent webm video",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "ffmpeg -i %04d.png -c:v vp8 -pix_fmt yuva420p -auto-alt-ref 0 -vf \"scale=1080:1920\" -b:v 2M output.webm"
+        }
+      ],
+      "id": "VyISTarX",
+      "createdAt": 1684175816726,
+      "updatedAt": 1684175952373
     }
   ],
-  "tags": []
+  "tags": [
+    {
+      "name": "ffmpeg",
+      "id": "--EnYQYW",
+      "createdAt": 1684175937693,
+      "updatedAt": 1684175937693
+    },
+    {
+      "name": "transparent",
+      "id": "MXeJ_H6U",
+      "createdAt": 1684175939352,
+      "updatedAt": 1684175939352
+    },
+    {
+      "name": "video",
+      "id": "zRRNqtRo",
+      "createdAt": 1684175940646,
+      "updatedAt": 1684175940646
+    },
+    {
+      "name": "webm",
+      "id": "mi4JpUSB",
+      "createdAt": 1684175947655,
+      "updatedAt": 1684175947655
+    }
+  ]
 }
