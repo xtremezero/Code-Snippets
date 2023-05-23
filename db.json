@@ -158,6 +158,28 @@
       "id": "VyISTarX",
       "createdAt": 1684175816726,
       "updatedAt": 1684175952373
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "tZvhzcQk",
+      "tagsIds": [
+        "zRRNqtRo",
+        "_WPjweY1",
+        "uiecukeo"
+      ],
+      "description": null,
+      "name": "VideoPlayer Subtitles from frames",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "csharp",
+          "value": "using System.Collections;\nusing System.Collections.Generic;\nusing UnityEngine;\nusing UnityEngine.Video;\npublic class VideoSubtitles : MonoBehaviour\n{\n    [System.Serializable] public struct Subtitles{\n        public int frame;\n        public string arText;\n        public string enText;\n        public float durationFrames;\n\n    }\n    \n    public TMPro.TextMeshProUGUI SubtitleText;\n    public Subtitles[] subtitles;\n    float subtitleTimer =0;\n    public long recentFrame=0;\n    int SubtitleIndex =0;\n    // Start is called before the first frame update\n    void OnEnable()\n    {\n        recentFrame = 0;\n        SubtitleIndex = 0 ;\n    }\n\n    // Update is called once per frame\n    void Update()\n    {\n        long _currentFrame = GetComponent<VideoPlayer>().frame;\n        float frameRate = GetComponent<VideoPlayer>().frameRate;\n\n        if (recentFrame <= subtitles[SubtitleIndex].frame && subtitles[SubtitleIndex].frame <= _currentFrame){\n            recentFrame = _currentFrame;\n            subtitleTimer = subtitles[SubtitleIndex].durationFrames/frameRate;\n            print(_currentFrame);\n            SubtitleText.gameObject.SetActive(true);   \n            SubtitleText.text = subtitles[SubtitleIndex].enText;\n            SubtitleIndex=Mathf.Clamp(++SubtitleIndex,0,subtitles.Length-1);\n        }\n        \n        if (subtitleTimer>0)\n            {\n                subtitleTimer-= Time.deltaTime;\n            }\n        else\n            {\n                subtitleTimer=0;\n                SubtitleText.gameObject.SetActive(false);   \n                SubtitleText.text = \"\";\n\n            }\n\n    }\n}\n"
+        }
+      ],
+      "id": "_h9UVNSI",
+      "createdAt": 1684838472088,
+      "updatedAt": 1684843121443
     }
   ],
   "tags": [
@@ -184,6 +206,18 @@
       "id": "mi4JpUSB",
       "createdAt": 1684175947655,
       "updatedAt": 1684175947655
+    },
+    {
+      "name": "player",
+      "id": "_WPjweY1",
+      "createdAt": 1684838498359,
+      "updatedAt": 1684838498359
+    },
+    {
+      "name": "subtitles",
+      "id": "uiecukeo",
+      "createdAt": 1684838501651,
+      "updatedAt": 1684838501651
     }
   ]
 }
