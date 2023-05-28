@@ -180,6 +180,28 @@
       "id": "_h9UVNSI",
       "createdAt": 1684838472088,
       "updatedAt": 1685111689747
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "tZvhzcQk",
+      "tagsIds": [
+        "YiqYgQtR",
+        "kntuNl48",
+        "JmAZBLKD"
+      ],
+      "description": null,
+      "name": "Basic TCP Server",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "csharp",
+          "value": "using UnityEngine;\nusing System;\nusing System.Text;\nusing System.Net;\nusing System.Net.Sockets;\nusing System.Threading;\n\npublic static class TCPServer\n{\n    static private TcpListener server;\n    static private Thread serverThread;\n    static private bool isRunning = false;\n    \n\n    static public void StartServer()\n    {\n        // Start the server thread\n        if (!isRunning)\n        {\n            serverThread = new Thread(ServerThread);\n            serverThread.Start();\n        }\n    }\n\n    static public void StopServer()\n    {\n        // Stop the server thread and close the listener\n        isRunning = false;\n        server.Stop();\n        serverThread.Join();\n    }\n\n    static private void ServerThread()\n    {\n        // Create a TCP listener and start listening for client connections\n        server = new TcpListener(IPAddress.Any, 8888);\n        server.Start();\n        isRunning = true;\n\n        Debug.Log(\"Server started. Waiting for connections...\");\n\n        while (isRunning)\n        {\n            if (server.Pending())\n            {\n                // Accept the client connection\n                TcpClient client = server.AcceptTcpClient();\n\n                // Handle the client connection in a separate thread\n                Thread clientThread = new Thread(ClientThread);\n                clientThread.Start(client);\n            }\n\n            // Add some delay to avoid high CPU usage\n            Thread.Sleep(10);\n        }\n\n        Debug.Log(\"Server stopped.\");\n    }\n\n    static private void ClientThread(object clientObj)\n    {\n        TcpClient client = (TcpClient)clientObj;\n\n        // Get the client's IP address and port\n        IPEndPoint clientEndPoint = (IPEndPoint)client.Client.RemoteEndPoint;\n        string clientAddress = clientEndPoint.Address.ToString();\n        int clientPort = clientEndPoint.Port;\n\n        Debug.Log(\"Client connected: \" + clientAddress + \":\" + clientPort);\n\n        // Receive data from the client\n        NetworkStream stream = client.GetStream();\n        byte[] buffer = new byte[1024];\n        int bytesRead;\n\n        while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)\n        {\n            // Convert the received data to a string\n            string receivedData = Encoding.ASCII.GetString(buffer, 0, bytesRead);\n\n            Debug.Log(\"Received data from client \" + clientAddress + \":\" + clientPort + \": \" + receivedData);\n\n            // Process the received data or send a response back to the client\n\n            // Send a response back to the client\n            string response = \"Server received: \" + receivedData;\n            byte[] responseData = Encoding.ASCII.GetBytes(response);\n            stream.Write(responseData, 0, responseData.Length);\n        }\n\n        // Close the client connection\n        client.Close();\n        Debug.Log(\"Client disconnected: \" + clientAddress + \":\" + clientPort);\n    }\n}\n"
+        }
+      ],
+      "id": "lfDmgbl0",
+      "createdAt": 1685296068336,
+      "updatedAt": 1685296093241
     }
   ],
   "tags": [
@@ -218,6 +240,24 @@
       "id": "uiecukeo",
       "createdAt": 1684838501651,
       "updatedAt": 1684838501651
+    },
+    {
+      "name": "tcp",
+      "id": "YiqYgQtR",
+      "createdAt": 1685296084225,
+      "updatedAt": 1685296084225
+    },
+    {
+      "name": "server",
+      "id": "kntuNl48",
+      "createdAt": 1685296085361,
+      "updatedAt": 1685296085361
+    },
+    {
+      "name": "network",
+      "id": "JmAZBLKD",
+      "createdAt": 1685296086329,
+      "updatedAt": 1685296086329
     }
   ]
 }
