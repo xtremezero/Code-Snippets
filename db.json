@@ -202,6 +202,24 @@
       "id": "lfDmgbl0",
       "createdAt": 1685296068336,
       "updatedAt": 1685296093241
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "Tbeq7Y2G",
+      "tagsIds": [],
+      "description": null,
+      "name": "Linux Pacman reset packages to default",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "pacman -Qqn | pacman -S -"
+        }
+      ],
+      "id": "uWM2ve8T",
+      "createdAt": 1699125025001,
+      "updatedAt": 1699125173275
     }
   ],
   "tags": [
